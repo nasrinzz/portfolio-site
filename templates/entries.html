@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Submitted Messages</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit&family=Cinzel:wght@500&display=swap" rel="stylesheet">
+
+<style>
+body{
+    background:linear-gradient(135deg,#020617,#0b0b0b);
+    color:#fff;
+    font-family:'Outfit',sans-serif;
+    padding:20px;
+}
+
+.box{
+    max-width:800px;
+    margin:0 auto;
+    background:#0f172a;
+    border-radius:10px;
+    border:1px solid #1e293b;
+    padding:30px;
+}
+
+h2{
+    font-family:'Cinzel',serif;
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.entry{
+    background:#020617;
+    padding:15px;
+    margin-bottom:15px;
+    border-radius:5px;
+    border:1px solid #1e293b;
+}
+
+.entry h3{
+    margin:0 0 5px 0;
+    color:#ff4d6d;
+}
+
+.entry p{
+    margin:5px 0;
+}
+
+.back-link{
+    display:block;
+    text-align:center;
+    margin-top:20px;
+    color:#ff4d6d;
+    text-decoration:none;
+}
+
+.back-link:hover{
+    text-decoration:underline;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Submitted Messages</h2>
+
+    {% if entries %}
+        {% for entry in entries %}
+        <div class="entry">
+            <h3>{{ entry[1] }} ({{ entry[2] }})</h3>
+            <p>{{ entry[3] }}</p>
+            <small>ID: {{ entry[0] }}</small>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No messages submitted yet.</p>
+    {% endif %}
+
+    <a href="/contact" class="back-link">Back to Contact</a>
+</div>
+
+</body>
+</html>

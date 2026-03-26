@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit&family=Cinzel:wght@500&display=swap" rel="stylesheet">
+
+<style>
+body{
+    background:linear-gradient(135deg,#020617,#0b0b0b);
+    color:#fff;
+    font-family:'Outfit',sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.box{
+    width:350px;
+    padding:30px;
+    background:#0f172a;
+    border-radius:10px;
+    border:1px solid #1e293b;
+}
+
+h2{
+    font-family:'Cinzel',serif;
+    margin-bottom:15px;
+}
+
+input, textarea{
+    width:100%;
+    padding:10px;
+    margin-bottom:12px;
+    background:#020617;
+    border:1px solid #1e293b;
+    color:#fff;
+}
+
+input:focus, textarea:focus{
+    outline:none;
+    border-color:#ff4d6d;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    background:#ff4d6d;
+    border:none;
+    color:#fff;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#e11d48;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Contact Me</h2>
+
+    
+    
+    <div style="color: green; margin-bottom: 10px;">Message sent successfully!</div>
+    
+    
+
+    <!-- IMPORTANT: CONNECTED TO FLASK -->
+    <form action="/submit" method="POST">
+
+        <input type="text" name="name" placeholder="Your Name" required>
+
+        <input type="email" name="email" placeholder="Your Email" required>
+
+        <textarea name="message" placeholder="Tell me about your project..." required></textarea>
+
+        <button type="submit">Send Message</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

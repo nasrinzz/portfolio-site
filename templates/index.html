@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Nasrin | Portfolio</title>
+
+<link rel="stylesheet" href="/static/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Cinzel:wght@500&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<nav>
+<h1>NASRIN</h1>
+<div>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#content">Content</a>
+<a href="#software">Software</a>
+<a href="#experience">Experience</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+<div class="sticker sticker-1"></div>
+<div class="sticker sticker-2"></div>
+<h2><span class="line1">HELLO, I'M</span><span class="line2">NASRIN!</span><span class="line3">VIDEO EDITOR</span></h2>
+<button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="hero-btn">Connect with me</button>
+</div>
+
+<section id="about">
+<h3>ABOUT</h3>
+<p>I'm Nasrin, a second semester BCA student with a passion for blending creativity and technology. By day, I'm diving deep into computer science fundamentals—from web development to software engineering. By night, I'm exploring the art of video editing and digital storytelling.</p>
+<p>What drives me is the intersection of code and creativity. I believe that great design isn't just about aesthetics; it's about creating experiences that resonate with people. Whether I'm crafting a dynamic website, editing cinematic content, or building interactive projects, I approach everything with meticulous attention to detail and a commitment to excellence.</p>
+<p>I'm constantly learning and pushing my boundaries. Every project is an opportunity to grow, experiment with new tools, and refine my craft. I love collaborating, sharing ideas, and contributing to meaningful work.</p>
+</section>
+
+<section id="skills">
+<div class="sticker sticker-skill"></div>
+<h3>SKILLS</h3>
+<div class="grid">
+<div class="card">HTML</div>
+<div class="card">CSS</div>
+<div class="card">JavaScript</div>
+<div class="card">Python</div>
+<div class="card">Java</div>
+</div>
+</section>
+
+<section id="content">
+<h3>CONTENT I CREATE</h3>
+<div class="grid">
+<div class="card">Reels</div>
+<div class="card">YouTube Videos</div>
+<div class="card">Cinematic Edits</div>
+<div class="card">Promo Ads</div>
+</div>
+</section>
+
+<section id="software">
+<h3>SOFTWARES</h3>
+<div class="grid">
+<div class="card">Premiere Pro</div>
+<div class="card">After Effects</div>
+<div class="card">CapCut</div>
+<div class="card">DaVinci Resolve</div>
+</div>
+</section>
+
+<section id="experience">
+<div class="sticker sticker-exp"></div>
+<h3>EXPERIENCE</h3>
+
+<div class="exp">
+<h4>Freelance Editing</h4>
+<p>Worked on reels and content projects.</p>
+</div>
+
+<div class="exp">
+<h4>College Projects</h4>
+<p>Created presentations and digital media projects.</p>
+</div>
+
+</section>
+
+<section id="contact">
+<div class="sticker sticker-contact"></div>
+<h3>CONTACT</h3>
+
+<div class="contact-box">
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div style="color: green; margin-bottom: 10px;">{{ messages[0] }}</div>
+{% endif %}
+{% endwith %}
+
+<form action="/submit" method="POST">
+<input type="text" name="name" placeholder="Name" required>
+<input type="email" name="email" placeholder="Email" required>
+<textarea name="message" placeholder="Message" required></textarea>
+<button type="submit">Send</button>
+</form>
+
+<div class="messages-section">
+<h4>Submitted Messages</h4>
+
+{% if entries %}
+{% for entry in entries %}
+<div class="entry">
+<h5>{{ entry[1] }} ({{ entry[2] }})</h5>
+<p>{{ entry[3] }}</p>
+<small>ID: {{ entry[0] }}</small>
+</div>
+{% endfor %}
+{% else %}
+<p>No messages submitted yet.</p>
+{% endif %}
+
+</div>
+</div>
+</section>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>
