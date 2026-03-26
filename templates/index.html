@@ -1,129 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Nasrin | Portfolio</title>
-
-<link rel="stylesheet" href="/static/style.css">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Cinzel:wght@500&display=swap" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nasrin | Creative Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-
 <body>
+    <!-- Background Elements -->
+    <div class="bg-pattern"></div>
+    <div class="floating-cloud" style="top: 15%; animation-duration: 25s;"></div>
+    <div class="floating-cloud" style="top: 45%; animation-duration: 35s; animation-delay: -10s;"></div>
+    <div class="floating-cloud" style="top: 75%; animation-duration: 30s; animation-delay: -5s;"></div>
+    
+    <div class="sparkle" style="top: 20%; left: 15%;"></div>
+    <div class="sparkle" style="top: 60%; right: 20%; animation-delay: -1s;"></div>
+    <div class="sparkle" style="top: 85%; left: 40%; animation-delay: -0.5s;"></div>
 
-<nav>
-<h1>NASRIN</h1>
-<div>
-<a href="#about">About</a>
-<a href="#skills">Skills</a>
-<a href="#content">Content</a>
-<a href="#software">Software</a>
-<a href="#experience">Experience</a>
-<a href="#contact">Contact</a>
-</div>
-</nav>
+    <!-- Success Popup -->
+    <div id="successPopup" class="popup-overlay">
+        <div class="popup-content">
+            <div class="popup-icon">
+                <i data-lucide="flower"></i>
+            </div>
+            <h2>Yay! Success!</h2>
+            <p>Your message has been sent with a sprinkle of magic! ✨</p>
+            <div class="popup-decorations">
+                <i data-lucide="heart"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="sparkles"></i>
+            </div>
+            <button onclick="closePopup()" class="close-btn">Close</button>
+        </div>
+    </div>
 
-<!-- HERO -->
-<div class="hero">
-<div class="sticker sticker-1"></div>
-<div class="sticker sticker-2"></div>
-<h2><span class="line1">HELLO, I'M</span><span class="line2">NASRIN!</span><span class="line3">VIDEO EDITOR</span></h2>
-<button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="hero-btn">Connect with me</button>
-</div>
+    <!-- Music Player Toggle -->
+    <div id="musicToggle" class="music-toggle" onclick="toggleMusic()">
+        <i data-lucide="music"></i>
+    </div>
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
 
-<section id="about">
-<h3>ABOUT</h3>
-<p>I'm Nasrin, a second semester BCA student with a passion for blending creativity and technology. By day, I'm diving deep into computer science fundamentals—from web development to software engineering. By night, I'm exploring the art of video editing and digital storytelling.</p>
-<p>What drives me is the intersection of code and creativity. I believe that great design isn't just about aesthetics; it's about creating experiences that resonate with people. Whether I'm crafting a dynamic website, editing cinematic content, or building interactive projects, I approach everything with meticulous attention to detail and a commitment to excellence.</p>
-<p>I'm constantly learning and pushing my boundaries. Every project is an opportunity to grow, experiment with new tools, and refine my craft. I love collaborating, sharing ideas, and contributing to meaningful work.</p>
-</section>
+    <!-- Flower Rain Container -->
+    <div id="flowerRainContainer"></div>
 
-<section id="skills">
-<div class="sticker sticker-skill"></div>
-<h3>SKILLS</h3>
-<div class="grid">
-<div class="card">HTML</div>
-<div class="card">CSS</div>
-<div class="card">JavaScript</div>
-<div class="card">Python</div>
-<div class="card">Java</div>
-</div>
-</section>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">NASRIN</a>
+            <div class="nav-links">
+                <a href="#about">ABOUT</a>
+                <a href="#skills">SKILLS</a>
+                <a href="#experience">EXPERIENCE</a>
+                <a href="#contact">CONTACT</a>
+            </div>
+        </div>
+    </nav>
 
-<section id="content">
-<h3>CONTENT I CREATE</h3>
-<div class="grid">
-<div class="card">Reels</div>
-<div class="card">YouTube Videos</div>
-<div class="card">Cinematic Edits</div>
-<div class="card">Promo Ads</div>
-</div>
-</section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Stickers/Doodles -->
+        <div class="sticker cd-sticker animate-float"></div>
+        <div class="sticker tulip-sticker animate-float" style="animation-delay: -2s;"></div>
+        <div class="sticker star-sticker animate-float" style="animation-delay: -4s;"><i data-lucide="star"></i></div>
+        <div class="sticker flower-sticker animate-float" style="animation-delay: -1s;"><i data-lucide="flower"></i></div>
+        <div class="sticker heart-sticker animate-float" style="animation-delay: -3s;"><i data-lucide="heart"></i></div>
+        <div class="sticker sparkle-sticker animate-float" style="animation-delay: -5s;"><i data-lucide="sparkles"></i></div>
 
-<section id="software">
-<h3>SOFTWARES</h3>
-<div class="grid">
-<div class="card">Premiere Pro</div>
-<div class="card">After Effects</div>
-<div class="card">CapCut</div>
-<div class="card">DaVinci Resolve</div>
-</div>
-</section>
+        <div class="hero-content reveal">
+            <span class="badge">WELCOME TO MY WORLD</span>
+            <h1 class="hero-title">
+                <div class="text-slide-up"><span>Hello, I'm <span class="cursive">Nasrin</span></span></div>
+                <div class="doodle-accent"></div>
+            </h1>
+            <p class="hero-subtitle">BCA Student • Developer • Digital Creator</p>
+            <p class="hero-quote">"Building creative + tech-driven experiences"</p>
+            <a href="#contact" class="cta-btn">
+                CONNECT WITH ME <i data-lucide="chevron-right"></i>
+            </a>
+        </div>
+    </section>
 
-<section id="experience">
-<div class="sticker sticker-exp"></div>
-<h3>EXPERIENCE</h3>
+    <!-- About Section -->
+    <section id="about" class="section-padding container">
+        <div class="about-grid">
+            <div class="about-content reveal-left">
+                <div class="section-header">
+                    <div class="line"></div>
+                    <h3>ABOUT ME</h3>
+                </div>
+                <h2 class="display-text">
+                    Combining <span class="pastel-blue italic">creativity</span> with <span class="pastel-purple">technology</span>.
+                </h2>
+                <p>I'm a BCA student who loves building web applications and creating digital content. My journey is all about turning ideas into real, impactful projects.</p>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="instagram"></i></a>
+                    <a href="#"><i data-lucide="twitter"></i></a>
+                    <a href="#"><i data-lucide="linkedin"></i></a>
+                </div>
+            </div>
+            <div class="image-wrapper reveal-right">
+                <img src="https://picsum.photos/seed/nasrin/600/400" alt="Nasrin Working" referrerPolicy="no-referrer">
+                <div class="sticker flower-sticker" style="bottom: 20px; left: 20px;"><i data-lucide="flower"></i></div>
+            </div>
+        </div>
+    </section>
 
-<div class="exp">
-<h4>Freelance Editing</h4>
-<p>Worked on reels and content projects.</p>
-</div>
+    <!-- Toolkit Section -->
+    <section id="skills" class="section-padding bg-white">
+        <div class="container">
+            <h2 class="section-title reveal">
+                My Toolkit
+                <div class="doodle-underline"></div>
+            </h2>
+            <div class="skills-grid stagger-container">
+                <div class="skill-card">
+                    <div class="skill-icon"><i data-lucide="code-2"></i></div>
+                    <span>PYTHON & FLASK</span>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i data-lucide="globe"></i></div>
+                    <span>HTML / CSS / JS</span>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i data-lucide="database"></i></div>
+                    <span>DATABASE (SQLITE)</span>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i data-lucide="video"></i></div>
+                    <span>CONTENT CREATION</span>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i data-lucide="trending-up"></i></div>
+                    <span>AFFILIATE MARKETING</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="exp">
-<h4>College Projects</h4>
-<p>Created presentations and digital media projects.</p>
-</div>
+    <!-- Experience Section -->
+    <section id="experience" class="section-padding container">
+        <div class="section-header reveal">
+            <div class="line"></div>
+            <h3>EXPERIENCE</h3>
+        </div>
+        <div class="experience-grid mt-10 stagger-container">
+            <div class="exp-card bg-pastel-blue">
+                <span class="exp-icon">💻</span>
+                <h4>Web Development</h4>
+                <p>Built portfolio websites and backend-connected apps using Flask and SQLite.</p>
+            </div>
+            <div class="exp-card bg-pastel-green">
+                <span class="exp-icon">📈</span>
+                <h4>Digital Marketing</h4>
+                <p>Working on content creation and helping people earn through affiliate marketing.</p>
+            </div>
+            <div class="exp-card bg-pastel-purple">
+                <span class="exp-icon">🎓</span>
+                <h4>Learning Journey</h4>
+                <p>Continuously improving coding, design, and problem-solving skills.</p>
+            </div>
+        </div>
+    </section>
 
-</section>
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding container">
+        <div class="contact-grid">
+            <div class="contact-info reveal">
+                <h3>GET IN TOUCH</h3>
+                <h2 class="display-text">Let's create something <span class="accent-text italic">magical</span>.</h2>
+                <p>Whether you have a project in mind or just want to say hi, I'd love to hear from you!</p>
+                <div class="contact-card mt-10">
+                    <div class="icon-box bg-pastel-blue">
+                        <i data-lucide="mail"></i>
+                    </div>
+                    <div class="text-box">
+                        <span class="label">SEND A LETTER TO</span>
+                        <span class="value">25bcad44@kristujayanti.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form reveal">
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>NAME</label>
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>EMAIL</label>
+                            <input type="email" name="email" placeholder="Email Address" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>MESSAGE</label>
+                        <textarea name="message" rows="5" placeholder="Write something sweet..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        SEND MESSAGE <i data-lucide="send"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-<section id="contact">
-<div class="sticker sticker-contact"></div>
-<h3>CONTACT</h3>
+    <!-- Guestbook Section -->
+    <section class="section-padding bg-white">
+        <div class="container">
+            <div class="guestbook-header reveal">
+                <div class="icon-box bg-pastel-purple">
+                    <i data-lucide="message-square"></i>
+                </div>
+                <h2 class="serif">Guestbook</h2>
+            </div>
+            <div id="messagesList" class="messages-grid">
+                <!-- Messages will be loaded here -->
+            </div>
+        </div>
+    </section>
 
-<div class="contact-box">
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-<div style="color: green; margin-bottom: 10px;">{{ messages[0] }}</div>
-{% endif %}
-{% endwith %}
+    <!-- Scribbles -->
+    <div class="scribble scribble-1"></div>
+    <div class="scribble scribble-2"></div>
+    <div class="scribble scribble-3"></div>
 
-<form action="/submit" method="POST">
-<input type="text" name="name" placeholder="Name" required>
-<input type="email" name="email" placeholder="Email" required>
-<textarea name="message" placeholder="Message" required></textarea>
-<button type="submit">Send</button>
-</form>
+    <footer>
+        <div class="container">
+            <p>MADE WITH <i data-lucide="heart" class="heart-icon"></i> BY NASRIN</p>
+        </div>
+    </footer>
 
-<div class="messages-section">
-<h4>Submitted Messages</h4>
-
-{% if entries %}
-{% for entry in entries %}
-<div class="entry">
-<h5>{{ entry[1] }} ({{ entry[2] }})</h5>
-<p>{{ entry[3] }}</p>
-<small>ID: {{ entry[0] }}</small>
-</div>
-{% endfor %}
-{% else %}
-<p>No messages submitted yet.</p>
-{% endif %}
-
-</div>
-</div>
-</section>
-
-<script src="/static/script.js"></script>
-
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
